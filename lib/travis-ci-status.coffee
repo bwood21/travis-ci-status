@@ -115,8 +115,6 @@ module.exports =
     @buildMatrixView = new BuildMatrixView(nwo)
     @buildStatusView = new BuildStatusView(nwo, @buildMatrixView, statusBar)
 
-    return
-
   # Internal: Open the project on Travis CI in the default browser.
   #
   # Returns nothing.
