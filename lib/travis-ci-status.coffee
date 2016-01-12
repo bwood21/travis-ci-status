@@ -37,13 +37,12 @@ module.exports =
       )
     ).then (repos) =>
       repos = repos.filter (repo) -> repo
-      new Promise((resolve) =>
-        if @hasGitHubRepo(repos)
-          @isTravisProject((config) ->
-            resolve() if config
-          )
-      )
 
+      new Promise(
+        (resolve) =>
+          if @hasGitHubRepo(repos)
+            @isTravisProject((config) -> config and resolve())
+      )
 
   # Internal: Deactive the package and destroys any views.
   #
