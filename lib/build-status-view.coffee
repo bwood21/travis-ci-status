@@ -96,6 +96,8 @@ class BuildStatusView extends View
     details = @nwo.split '/'
 
     updateRepo = =>
+      return @status.removeClass('pending success fail') unless navigator.onLine
+
       atom.travis.repos(details[0], details[1]).get(@repoStatus)
 
     if atom.travis?.pro?
