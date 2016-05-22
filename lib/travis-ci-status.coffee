@@ -31,6 +31,12 @@ module.exports =
   #
   # Returns nothing.
   activate: ->
+    @projectChangeSubscription = atom.project.onDidChangePaths =>
+      @checkTravisRepos().then => @init(@statusBar)
+
+    @checkTravisRepos()
+
+  checkTravisRepos: ->
     @activationPromise = Promise.all(
       atom.project.getDirectories().map(
         atom.project.repositoryForDirectory.bind(atom.project)
@@ -129,6 +135,7 @@ module.exports =
     shell.openExternal("https://#{domain}/#{nwo}")
 
   consumeStatusBar: (statusBar) ->
+    @statusBar = statusBar
     @activationPromise.then( => @init(statusBar))
     @statusBarSubscription = new Disposable =>
       @buildStatusView?.destroy()
