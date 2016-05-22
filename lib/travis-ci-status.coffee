@@ -57,6 +57,7 @@ module.exports =
     atom.travis = null
     @statusBarSubscription?.dispose()
     @buildMatrixView?.destroy()
+    @projectChangeSubscription?.dispose()
 
   # Internal: Serialize each view state so it can be restored when activated.
   #
