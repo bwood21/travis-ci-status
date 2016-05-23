@@ -1,6 +1,6 @@
 fs = require 'fs'
 path = require 'path'
-shell = require 'shell'
+{shell} = require 'electron'
 {Disposable} = require 'atom'
 
 TravisCi = null
