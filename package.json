@@ -6,6 +6,7 @@
   "repository": "https://github.com/tombell/travis-ci-status",
   "author": "Tom Bell <tomb@tomb.io> (https://github.com/tombell)",
   "contributors": [
+    "Daniel J Griffiths <dgriffiths@section214.com> (https://github.com/section214)",
     "José Magalhães <magalhas@gmail.com> (https://github.com/magalhas)"
   ],
   "license": "MIT",
