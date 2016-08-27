@@ -80,12 +80,13 @@ class BuildStatusView extends View
     @repoPromise.then (repos) =>
       name = atom.config.get('travis-ci-status.travisCiRemoteName')
 
-      repo_list = repos.filter (r) ->
-        if r
-          /(.)*github\.com/i.test(r.getConfigValue("remote.#{name}.url"))
+      if repos?
+        repo_list = repos.filter (r) ->
+          if r?
+            /(.)*github\.com/i.test(r.getConfigValue("remote.#{name}.url"))
 
-      @repo = repo_list[0]
-      @repo.onDidChangeStatus(@update)
+        @repo = repo_list[0]
+        @repo.onDidChangeStatus(@update)
 
   # Internal: Update the repository build status from Travis CI.
   #
