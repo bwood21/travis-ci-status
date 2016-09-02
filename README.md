@@ -41,3 +41,7 @@ The following commands are available for users to keymap.
 * `travis-ci-status:toggle` - Toggle the status bar entry
 * `travis-ci-status:toggle-build-matrix` - Toggle the build matrix panel
 * `travis-ci-status:open-on-travis` - Open the project on the Travis CI site
+
+### Note
+
+Since August 27, 2016 the Travis CI Status package is being maintained by [Ghost1227](https://github.com/ghost1227). While development will be happening in tombell's repo, please direct any messages to me through [my website](https://section214.com).
