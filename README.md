@@ -27,6 +27,10 @@ If the remote repository Travis is configured to build is named something other
 than `origin`, you can specify a different name in the **Travis Ci Remote Name**
 field in the settings view.
 
+Per-repo remotes are also now supported. To specify a per-repo remote, enter it in the **Remote Overrides** field in the settings view in the format `{"repo":"remote"}`. In other words, if I wanted to add the Travis CI Status package with the remote "upstream", I would enter it as follows:
+
+`{"tombell/travis-ci-status":"upstream"}`
+
 ### Travis Pro
 
 You are able to use this with Travis Pro if you enable it in the settings view.
