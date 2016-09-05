@@ -98,6 +98,9 @@ module.exports =
   # exist.
   getNameWithOwner: ->
     repo = atom.project.getRepositories()[0]
+
+    return null unless repo?
+
     name = @getFinalRemote(repo)
     url  = repo.getConfigValue("remote.#{name}.url")
 
