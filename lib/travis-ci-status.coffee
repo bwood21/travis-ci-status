@@ -109,17 +109,18 @@ module.exports =
     if not repo?
       repo = atom.project.getRepositories()[0]
 
-    url = repo.getOriginURL()
-    gitPath = /([^\/:]+)\/([^\/]+)$/.exec(url.replace(/\.git$/, ''))[0]
+    if repo?
+      url = repo.getOriginURL()
+      gitPath = /([^\/:]+)\/([^\/]+)$/.exec(url.replace(/\.git$/, ''))[0]
 
-    name = atom.config.get('travis-ci-status.travisCiRemoteName')
-    override = atom.config.get('travis-ci-status.travisCiAltRemotes')
-    override = JSON.parse(override)
+      name = atom.config.get('travis-ci-status.travisCiRemoteName')
+      override = atom.config.get('travis-ci-status.travisCiAltRemotes')
+      override = JSON.parse(override)
 
-    if override.hasOwnProperty(gitPath)
-      name = override[gitPath]
+      if override.hasOwnProperty(gitPath)
+        name = override[gitPath]
 
-    name
+      name
 
   # Internal: Check there is a .travis.yml configuration file.
   # Bool result is passed in callback.
