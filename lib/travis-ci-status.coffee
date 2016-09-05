@@ -11,18 +11,23 @@ BuildStatusView = null
 module.exports =
   # Internal: The default configuration properties for the package.
   config:
-    useTravisCiPro:
-      type: 'boolean'
-      default: false
-      description: 'Check to enable Travis CI Pro support'
-    personalAccessToken:
-      type: 'string'
-      default: ''
-      description: 'Your personal GitHub access token (required for Travis CI Pro)'
     travisCiRemoteName:
       type: 'string'
       default: 'origin'
+      title: 'Travis CI Remote Name'
       description: 'Enter the name of the remote used for Travis integration'
+      order: 1
+    useTravisCiPro:
+      type: 'boolean'
+      default: false
+      title: 'Use Travis CI Pro'
+      order: 2
+    personalAccessToken:
+      type: 'string'
+      default: ''
+      title: 'Personal Access Token'
+      description: 'Your personal [GitHub access token](https://github.com/settings/tokens) (*required for Travis CI Pro*)'
+      order: 3
 
   # Internal: The build matrix bottom panel view.
   buildMatrixView: null
@@ -34,6 +39,8 @@ module.exports =
   #
   # Returns nothing.
   activate: ->
+    @updateSettings
+
     @projectChangeSubscription = atom.project.onDidChangePaths =>
       @checkTravisRepos().then => @init(@statusBar)
 
