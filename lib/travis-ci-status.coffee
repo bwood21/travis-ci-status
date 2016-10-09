@@ -117,11 +117,16 @@ module.exports =
       gitPath = /([^\/:]+)\/([^\/]+)$/.exec(url.replace(/\.git$/, ''))[0]
 
       name = atom.config.get('travis-ci-status.travisCiRemoteName')
-      override = atom.config.get('travis-ci-status.travisCiAltRemotes')
-      override = JSON.parse(override)
+      override = atom.config.get('travis-ci-status.travisCiAltRemotes') || "{}"
 
-      if override.hasOwnProperty(gitPath)
-        name = override[gitPath]
+      if override?
+        try
+          override = JSON.parse(override)
+        catch
+          override = {}
+
+        if override.hasOwnProperty(gitPath)
+          name = override[gitPath]
 
       name
 
